@@ -22,99 +22,126 @@ public class Users {
 		User admin=new User();
 		public static Vector<Student> slist=new Vector();
 		public static Vector<Teacher> tlist=new Vector();
-		public static void showStudents() {//ÏÔÊ¾ËùÓĞÑ§Éú
-			System.out.println("Ñ§ºÅ"+" "+"ĞÕÃû"+" "+"°à¼¶");
+		public static void showStudents() {//æ˜¾ç¤ºæ‰€æœ‰å­¦ç”Ÿ
+			System.out.println("å­¦å·"+" "+"å§“å"+" "+"ç­çº§");
 			int i;
 			for(i=0;i<slist.size();i++) {
 				slist.get(i).show();
 			}
 		}
-		public static void showTeachers() {//ÏÔÊ¾ËùÓĞ½ÌÊ¦
-			System.out.println("¹¤ºÅ"+" "+"ĞÕÃû"+" "+"Ö°³Æ");
+		public static void showTeachers() {//æ˜¾ç¤ºæ‰€æœ‰æ•™å¸ˆ
+			System.out.println("å·¥å·"+" "+"å§“å"+" "+"èŒç§°");
 			int i;
 			for(i=0;i<tlist.size();i++) {
 				tlist.get(i).show();
 			}
 		}
-		public static void reStuPass() {//»Ö¸´Ñ§Éú³õÊ¼ÃÜÂë
-			System.out.println("ÇëÊäÈëÑ§ºÅ£º");
+		public static void reStuPass() {//æ¢å¤å­¦ç”Ÿåˆå§‹å¯†ç 
+			int flag=0;
+			System.out.println("è¯·è¾“å…¥å­¦å·ï¼š");
 			Scanner sc=new Scanner(System.in);
 			int id,i;
 			id=sc.nextInt();
 			for(i=0;i<slist.size();i++) {
-				if(slist.get(i).id==id)
+				if(slist.get(i).id==id) {
+					flag==1;
 					break;
+				}		
 			}
-			System.out.println("Ñ§ºÅ"+" "+"ĞÕÃû"+" "+"°à¼¶");
-			slist.get(i).show();
-			slist.get(i).pass="123456";
-			System.out.println("ĞŞ¸Ä³É¹¦£¡");
+			if(flag==0) {
+				System.out.println("æœªæ‰¾åˆ°è¯¥å­¦ç”Ÿï¼");
+			}else {
+				System.out.println("å­¦å·"+" "+"å§“å"+" "+"ç­çº§");
+				slist.get(i).show();
+				slist.get(i).pass="123456";
+				System.out.println("ä¿®æ”¹æˆåŠŸï¼");
+			}
+			
 		}
-		public static void reThrPass() {//»Ö¸´½ÌÊ¦³õÊ¼ÃÜÂë
-			System.out.println("ÇëÊäÈë¹¤ºÅ£º");
+		public static void reThrPass() {//æ¢å¤æ•™å¸ˆåˆå§‹å¯†ç 
+			int flag=0;
+			System.out.println("è¯·è¾“å…¥å·¥å·ï¼š");
 			Scanner sc=new Scanner(System.in);
 			int id,i;
 			id=sc.nextInt();
 			for(i=0;i<tlist.size();i++) {
-				if(tlist.get(i).workId==id)
+				if(tlist.get(i).workId==id) {
+					flag=1;
 					break;
+				}
+				
 			}
-			System.out.println("¹¤ºÅ"+" "+"ĞÕÃû"+" "+"Ö°³Æ");
-			tlist.get(i).show();
-			tlist.get(i).pass="123456";
-			System.out.println("ĞŞ¸Ä³É¹¦£¡");
+			if(flag==0) {
+				System.out.println("æœªæ‰¾åˆ°è¯¥æ•™å¸ˆï¼");
+			}else {
+				System.out.println("å·¥å·"+" "+"å§“å"+" "+"èŒç§°");
+				tlist.get(i).show();
+				tlist.get(i).pass="123456";
+				System.out.println("ä¿®æ”¹æˆåŠŸï¼");
+			}
+			
 		}
-		public static void addStudent() {//Ìí¼ÓÑ§Éú
+		public static void addStudent() {//æ·»åŠ å­¦ç”Ÿ
 			int a=0;
 		    do {
 			slist.add(Student.add_one());
-			System.out.println("°´1¼ÌĞøÌí¼Ó...");
+			System.out.println("æŒ‰1ç»§ç»­æ·»åŠ ...");
 			Scanner sc=new Scanner(System.in);
 			a=sc.nextInt();	
 		}while(a==1);
 		}
-		public static void addTeacher() {//Ìí¼Ó½ÌÊ¦
+		public static void addTeacher() {//æ·»åŠ æ•™å¸ˆ
 			int a=0;
 		    do {
 			tlist.add(Teacher.add_one());
-			System.out.println("°´1¼ÌĞøÌí¼Ó...");
+			System.out.println("æŒ‰1ç»§ç»­æ·»åŠ ...");
 			Scanner sc=new Scanner(System.in);
 			a=sc.nextInt();	
 		}while(a==1);
 		}
-		public static void delStudent() {//É¾³ıÑ§Éú
+		public static void delStudent() {//åˆ é™¤å­¦ç”Ÿ
+			int flag=0;
 			if(slist.size()==0) {
-				System.out.println("Ä¿Ç°Ã»ÓĞÑ§ÉúĞÅÏ¢£¬ÎŞ·¨½øĞĞÉ¾³ı²Ù×÷£¡");
+				System.out.println("ç›®å‰æ²¡æœ‰å­¦ç”Ÿä¿¡æ¯ï¼Œæ— æ³•è¿›è¡Œåˆ é™¤æ“ä½œï¼");
 				return;
 			}
-			System.out.println("ÇëÊäÈëÒªÉ¾³ıµÄÑ§ÉúµÄÑ§ºÅ£º");
+			System.out.println("è¯·è¾“å…¥è¦åˆ é™¤çš„å­¦ç”Ÿçš„å­¦å·ï¼š");
 			int a,i;
 			Scanner sc=new Scanner(System.in);
 			a=sc.nextInt();
 			for(i=0;i<slist.size();i++) {
 				if(slist.get(i).id==a) {
+					flag=1;
 					break;
 				}
 			}
+			if(flag==0) 
+				System.out.println("æœªæ‰¾åˆ°è¯¥å­¦ç”Ÿï¼");
+			else
 			slist.remove(i);
 		}
-		public static void delTeacher() {//É¾³ı½ÌÊ¦
+		public static void delTeacher() {//åˆ é™¤æ•™å¸ˆ
+			int flag=0;
 			if(tlist.size()==0) {
-				System.out.println("Ä¿Ç°Ã»ÓĞ½ÌÊ¦ĞÅÏ¢£¬ÎŞ·¨½øĞĞÉ¾³ı²Ù×÷£¡");
+				System.out.println("ç›®å‰æ²¡æœ‰æ•™å¸ˆä¿¡æ¯ï¼Œæ— æ³•è¿›è¡Œåˆ é™¤æ“ä½œï¼");
 				return;
 			}
-			System.out.println("ÇëÊäÈëÒªÉ¾³ıµÄ½ÌÊ¦µÄ¹¤ºÅ£º");
+			System.out.println("è¯·è¾“å…¥è¦åˆ é™¤çš„æ•™å¸ˆçš„å·¥å·ï¼š");
 			int a,i;
 			Scanner sc=new Scanner(System.in);
 			a=sc.nextInt();
 			for(i=0;i<tlist.size();i++) {
 				if(tlist.get(i).workId==a) {
+					flag=1;
 					break;
 				}
 			}
+			if(flag==0)
+				System.out.println("æœªæ‰¾åˆ°è¯¥æ•™å¸ˆï¼");
+			else
 			tlist.remove(i);
 		}
-		public static void saveTeacher() {//½«½ÌÊ¦ĞÅÏ¢Ğ´ÈëÎÄ¼ş
+		public static void saveTeacher() {//å°†æ•™å¸ˆä¿¡æ¯å†™å…¥æ–‡ä»¶
 			File file=new File("C:/Users/maling/eclipse-workspace/course/Teacher.txt");
 			try {
 				if(!file.exists()) {
@@ -131,7 +158,7 @@ public class Users {
 			}
 			
 		}
-		public static void readTeacher() {//´ÓÎÄ¼şÖĞ¶ÁÈ¡½ÌÊ¦ĞÅÏ¢
+		public static void readTeacher() {//ä»æ–‡ä»¶ä¸­è¯»å–æ•™å¸ˆä¿¡æ¯
 			try {
 				BufferedReader br=new BufferedReader(new InputStreamReader
 						(new FileInputStream("C:/Users/maling/eclipse-workspace/course/Teacher.txt")));
@@ -151,7 +178,7 @@ public class Users {
 			}
 			
 		}
-		public static void saveStudent() {//½«Ñ§ÉúĞÅÏ¢Ğ´ÈëÎÄ¼ş
+		public static void saveStudent() {//å°†å­¦ç”Ÿä¿¡æ¯å†™å…¥æ–‡ä»¶
 			File file=new File("C:/Users/maling/eclipse-workspace/course/Student.txt");
 			try {
 				if(!file.exists()) {
@@ -168,7 +195,7 @@ public class Users {
 			}
 			
 		}
-		public static void readStudent() {//´ÓÎÄ¼şÖĞ¶ÁÈ¡Ñ§ÉúĞÅÏ¢
+		public static void readStudent() {//ä»æ–‡ä»¶ä¸­è¯»å–å­¦ç”Ÿä¿¡æ¯
 			try {
 				BufferedReader br=new BufferedReader(new InputStreamReader
 						(new FileInputStream("C:/Users/maling/eclipse-workspace/course/Student.txt")));
